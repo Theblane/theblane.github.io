@@ -118,37 +118,44 @@
       font-size: 1.05em;
     }
 
-    .links {
+    .stack {
       display: flex;
       flex-direction: column;
       border-top: 1px solid var(--rule);
     }
 
-    .link {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    .stack-item {
       padding: 1.4rem 0;
       border-bottom: 1px solid var(--rule);
+    }
+
+    .stack-link {
+      display: block;
       text-decoration: none;
       color: var(--fg);
       transition: padding-left 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), color 0.25s ease;
     }
 
-    .link:hover {
+    .stack-link:hover {
       padding-left: 0.85rem;
       color: var(--accent);
     }
 
-    .link-label {
+    .stack-label {
       font-size: 10px;
       text-transform: uppercase;
       letter-spacing: 0.14em;
       color: var(--muted);
-      margin-bottom: 0.2rem;
+      margin-bottom: 0.55rem;
     }
 
-    .link-text {
+    .stack-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .stack-title {
       font-family: 'Fraunces', serif;
       font-style: italic;
       font-size: 1.6rem;
@@ -156,14 +163,44 @@
       line-height: 1.1;
     }
 
-    .link-arrow {
+    .stack-arrow {
       font-size: 16px;
+      color: var(--muted);
       transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .stack-link:hover .stack-arrow {
+      transform: translateX(8px);
+      color: var(--accent);
+    }
+
+    .stack-edu {
+      display: flex;
+      flex-direction: column;
+      gap: 0.95rem;
+    }
+
+    .edu-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .edu-school {
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-size: 1.25rem;
+      font-weight: 400;
+      line-height: 1.2;
+      letter-spacing: -0.005em;
+    }
+
+    .edu-degree-text {
+      font-size: 12px;
       color: var(--muted);
     }
 
-    .link:hover .link-arrow {
-      transform: translateX(8px);
+    .edu-degree-text .date {
       color: var(--accent);
     }
 
@@ -180,8 +217,9 @@
 
     @media (max-width: 600px) {
       body { padding: 2rem 1.25rem; background-size: 40px 40px; }
-      .link { padding: 1.1rem 0; }
-      .link-text { font-size: 1.35rem; }
+      .stack-item { padding: 1.2rem 0; }
+      .stack-title { font-size: 1.4rem; }
+      .edu-school { font-size: 1.1rem; }
     }
   </style>
 </head>
@@ -200,20 +238,39 @@
       </p>
     </main>
 
-    <section class="links" aria-label="Links">
-      <a class="link" href="https://www.linkedin.com/in/blanemaher" target="_blank" rel="noopener noreferrer">
-        <div>
-          <div class="link-label">01 — Network</div>
-          <div class="link-text">LinkedIn</div>
+    <section class="stack" aria-label="Sections">
+      <a class="stack-item stack-link" href="https://www.linkedin.com/in/REPLACE-ME" target="_blank" rel="noopener noreferrer">
+        <div class="stack-label">01 — Network</div>
+        <div class="stack-row">
+          <span class="stack-title">LinkedIn</span>
+          <span class="stack-arrow" aria-hidden="true">→</span>
         </div>
-        <span class="link-arrow" aria-hidden="true">→</span>
       </a>
-      <a class="link" href="https://github.com/Theblane" target="_blank" rel="noopener noreferrer">
-        <div>
-          <div class="link-label">02 — Code</div>
-          <div class="link-text">GitHub</div>
+
+      <div class="stack-item">
+        <div class="stack-label">02 — Education</div>
+        <div class="stack-edu">
+          <div class="edu-row">
+            <div class="edu-school">University of Pennsylvania</div>
+            <div class="edu-degree-text">Master of Applied Science in Computer Science <span class="date">· Aug. 2026</span></div>
+          </div>
+          <div class="edu-row">
+            <div class="edu-school">Embry-Riddle Aeronautical University</div>
+            <div class="edu-degree-text">B.S. Unmanned Systems Applications</div>
+          </div>
+          <div class="edu-row">
+            <div class="edu-school">Luther College</div>
+            <div class="edu-degree-text">B.A. Business Administration</div>
+          </div>
         </div>
-        <span class="link-arrow" aria-hidden="true">→</span>
+      </div>
+
+      <a class="stack-item stack-link" href="https://github.com/Theblane" target="_blank" rel="noopener noreferrer">
+        <div class="stack-label">03 — Code</div>
+        <div class="stack-row">
+          <span class="stack-title">GitHub</span>
+          <span class="stack-arrow" aria-hidden="true">→</span>
+        </div>
       </a>
     </section>
 
